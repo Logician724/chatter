@@ -46,7 +46,7 @@ Route::group([
     ]);
 
     Route::get('/forumCategory/create', 'ChatterController@createCategory');
-
+    Route::post('/forumCategory', 'ChatterController@storeCategory');
     /*
      * Auth routes.
      */
