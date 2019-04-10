@@ -45,6 +45,8 @@ Route::group([
         'middleware' => $middleware('category.show'),
     ]);
 
+    Route::get('/forumCategory/create', 'ChatterController@createCategory');
+
     /*
      * Auth routes.
      */
