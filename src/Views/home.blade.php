@@ -64,6 +64,9 @@
 	    		<!-- SIDEBAR -->
 	    		<div class="chatter_sidebar">
 					<button class="btn btn-primary" id="new_discussion_btn"><i class="chatter-new"></i> @lang('chatter::messages.discussion.new')</button>
+					@if(request()->get('userType')=== 'vo')
+					<a href="/forums/forumCategory/create">Create Category</a>
+					@endif
 					<a href="/{{ Config::get('chatter.routes.home') }}"><i class="chatter-bubble"></i> @lang('chatter::messages.discussion.all')</a>
           {!! $categoriesMenu !!}
 				</div>
