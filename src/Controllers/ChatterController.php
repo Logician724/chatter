@@ -5,7 +5,8 @@ namespace DevDojo\Chatter\Controllers;
 use Auth;
 use DevDojo\Chatter\Helpers\ChatterHelper as Helper;
 use DevDojo\Chatter\Models\Models;
-use DevDojo\Chatter\Models\Models\Category;
+use DevDojo\Chatter\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as Controller;
 
 class ChatterController extends Controller
@@ -48,6 +49,19 @@ class ChatterController extends Controller
         return view('chatter::categorycreate');
     }
     
+    public function storeCategory(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|min:3|max:191',
+            'slug' => 'required|min:3|max:191'
+        ]);
+        Category::create([
+            'name' => $request->get('name'),
+            'slug' => $request->get('slug'),
+            'color' => '#000000'
+        ]);
+        return redirect('/forums');
+    }
     public function login()
     {
         if (!Auth::check()) {
